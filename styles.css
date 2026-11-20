@@ -20,6 +20,12 @@ body {
     line-height: 1.6;
 }
 
+a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
 .background-container {
     position: fixed;
     top: 0;
@@ -131,6 +137,7 @@ header.hero {
     flex-wrap: wrap;
     margin-top: 20px;
 }
+
 .badge-projects {
     display: flex;
     justify-content: flex-start;
@@ -138,6 +145,7 @@ header.hero {
     flex-wrap: wrap;
     margin-top: 10px;
 }
+
 .badge {
     background: var(--glass);
     border: 1px solid var(--glass-border);
@@ -162,9 +170,11 @@ header.hero {
     transform: translateY(-5px);
     border-color: rgba(255, 255, 255, 0.2);
 }
+
 .section .stack-container {
     margin-bottom: 25px;
 }
+
 .section h3 {
     font-size: 1.8rem;
     margin-bottom: 25px;
@@ -201,6 +211,34 @@ section .stack-title {
     justify-content: space-between;
 }
 
+.project-preview-placeholder {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    padding: 0;
+    min-height: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    border: 1px dashed rgba(79, 195, 220, 0.45);
+    border-radius: 14px;
+    background: radial-gradient(circle at center, rgba(79, 195, 220, 0.08), rgba(255, 45, 117, 0.04));
+    color: rgba(79, 195, 220, 0.75);
+}
+
+.project-preview-placeholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: inherit;
+    font-size: 1.8rem;
+    text-shadow: 0 0 16px rgba(79, 195, 220, 0.45);
+}
+
 .header-project-card {
     display: flex;
     justify-content: space-between;
@@ -213,6 +251,7 @@ section .stack-title {
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
+
 .fullstack-badge {
     font-size: 0.6rem;
     border: 1px solid var(--secondary);
@@ -228,6 +267,7 @@ section .stack-title {
     padding: 4px 10px;
     border-radius: 15px;
 }
+
 .project-card p {
     font-size: 0.85rem;
     color: #bbb;
@@ -291,11 +331,45 @@ section .stack-title {
 }
 
 @keyframes fadeInDown {
-    from {opacity: 0; transform: translateY(-30px);}
-    to {opacity: 1; transform: translateY(0);}
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 768px) {
-    .hero h1 {font-size: 2.5rem;}
-    .section {padding: 25px;}
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .section {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 520px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-preview-placeholder {
+        min-height: 100px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
